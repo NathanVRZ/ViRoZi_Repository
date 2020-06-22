@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="imgs/favicon-32x32.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/form-style.css" />
+  <script src="js/menu.js"></script>
+  <title>Contato</title>
+</head>
+
+<body>
+  <div class="sidebar" id="mySidebar">
+    <a href="#" class="closebtn" onclick="closeNav()">x</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="contato.html">Contato</a>
+    <a href="index.html">Sair</a>
+  </div>
+  <div class="header">
+    <a class="openbtn" onclick="openNav()">☰</a>
+
+    <div class="main-contato">
+      <h1>Entre em contato</h1>
+      <form onsubmit="enviaContatoProBanco()">
+        <ul id="mensagemErro" class="m-erro">
+        </ul>
+        <div>
+          <label for="nomesobrenome">Nome e Sobrenome:</label>
+          <input type="text" id="nomesobrenome" class="input-padrao" />
+
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" placeholder="seuemail@dominio.com" class="input-padrao" />
+
+          <label for="telefone">Telefone:</label>
+          <input type="text" id="telefone" class="input-padrao" placeholder="(00) 90000-0000" />
+
+          <label for="mensagem">Mensagem:</label>
+          <textarea id="mensagem" cols="60" rows="10" class="input-padrao"></textarea>
+          <label>Campo Númerico:
+            <input id="campoNum" class="input-padrao">
+          </label>
+
+          <div>
+            <p>Como prefere nosso contato ?</p>
+            <label for="telefone-radio">
+              <input type="radio" name="contato" id="telefone-radio" />
+              Telefone
+            </label>
+
+            <label for="email-radio">
+              <input type="radio" name="contato" id="email-radio" />
+              E-mail:
+            </label>
+
+            <label for="whatsapp">
+              <input type="radio" name="contato" id="whatsapp" />
+              WhatsApp
+            </label>
+
+            <label>
+              <input type="checkbox"> Quero receber novidades
+            </label>
+          </div>
+          <button type="submit" onclick="enviaContatoProBanco()" class="input-padrao btngreen">Enviar</button>
+        </div>
+        <div class="form-img"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+  function enviaContatoProBanco() {
+
+    var erros = validaContato();
+    mensagemErro.innerHTML = "";
+
+    if (erros.length > 0) {
+      for (var i = 0; i < erros.length; i++) {
+        var erro = erros[i];
+        var li = document.createElement("li");
+        li.innerHTML = erro;
+        mensagemErro.appendChild(li);
+      }
+    } else {
+      // Código que envia os dados
+      // para o BD
+    }
+  }
+
+  function validaContato() {
+    var erros = [];
+
+    if (!nomesobrenome.value) {
+      erros.push("Prencher nome!");
+    }
+
+    if (!email.value ||
+      (email.value.search("@") == -1) ||
+      (email.value.search(".") == -1) ||
+      (email.value.search(" ") >= '')) {
+      erros.push("O formato do email é: usuario@dominio.com");
+    }
+
+    if (!mensagem.value) {
+      erros.push("Preencha a mensagem!")
+    }
+
+    if (isNaN(campoNum.value)) {
+      erros.push("Insira um número valido!");
+    }
+    return erros;
+  }
+</script>

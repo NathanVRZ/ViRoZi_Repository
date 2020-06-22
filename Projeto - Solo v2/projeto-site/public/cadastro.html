@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="imgs/favicon-32x32.png" />
+  <link rel="stylesheet" href="css/login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BANDDE - CADASTRO</title>
+</head>
+
+<body>
+  <section class="loginbox">
+
+    <h1>Cadastro</h1>
+    <form>
+      <ul id="msgerros"></ul>
+    </form>
+    <div class="box">
+      <label for="nome"></label>
+      <input type="text" id="nome" name="nome" placeholder="Nome">
+      <br>
+      <label for="user"></label>
+      <input type="text" id="user" name="user" placeholder="usuario">
+      <br>
+      <label for="email"></label>
+      <input type="text" id="email" name="email" placeholder="email">
+      <br>
+      <label for="senha"></label>
+      <input type="password" id="senha" name="senha" placeholder="Senha">
+      <br>
+      <button class="btn" id="btn_entrar" onclick="cadastrar()">CADASTRAR</button>
+    </div>
+
+    <a href="index.html"><input type="submit" class="btn" value="INICIO"></a>
+
+    <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
+
+    </div>
+  </section>
+</body>
+
+</html>
+<script>
+  function cadastrar() {
+
+    var erros = validacadastro();
+    msgerros.innerHTML = '';
+
+    if (erros.length > 0) {
+      for (var i = 0; i < erros.length; i++) {
+        var erro = erros[i];
+        var li = document.createElement("li");
+        li.innerHTML = erro;
+        msgerros.appendChild(li);
+      }
+    } else {
+      // Código que envia os dados
+      // para o BD
+    }
+  }
+
+  function validacadastro() {
+    var erros = [];
+
+    if (!nome.value) {
+      erros.push("Preencher nome!");
+    }
+
+    if (!email.value ||
+      (email.value.search("@") == -1) ||
+      (email.value.search(".") == -1) ||
+      (email.value.search(" ") >= '')) {
+      erros.push("O formato do email é: usuario@dominio.com");
+    }
+
+    if (!user.value) {
+      erros.push("Preencha usuario")
+    }
+
+    if (!senha.value) {
+      erros.push("Insira apenas 8 caracteres");
+    }
+    return erros;
+  }
+
+</script>

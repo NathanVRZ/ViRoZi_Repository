@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="imgs/favicon-32x32.png" />
+    <link rel="stylesheet" href="css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANDDE - LOGIN</title>
+</head>
+<body>
+    <section class="loginbox">
+
+        <h1>Login</h1>
+  
+        <form id="form_login" class="box" method="post" onsubmit="return entrar()">
+          <input type="text" placeholder="email" name="login">
+          <br>
+            <input type="password" placeholder="Senha" name="senha">
+            <br>
+            <button class="btn" id="btn_entrar">ENTRAR</button>
+        </form>
+
+        <a href="index.html"><input type="submit" class="btn" value="INICIO"></a>
+        
+        <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
+        
+        </div>
+      </section>
+</body>
+</html>
+<script>
+
+  function entrar() {
+      var formulario = new URLSearchParams(new FormData(form_login));
+      fetch("/usuarios/autenticar", {
+          method: "POST",
+          body: formulario
+      }).then(resposta => {
+          
+          if (resposta.ok) {
+
+              resposta.json().then(json => {
+
+                  sessionStorage.login_usuario_meuapp = json.login;
+                  sessionStorage.nome_usuario_meuapp = json.nome;
+                  
+                  window.location.href = 'dashboard.html';
+              });
+
+          } else {
+
+              console.log('Erro de login!');
+
+              response.text().then(texto => {
+                  console.error(texto);
+              });
+          }
+      });
+
+      return false;
+  }
+</script>

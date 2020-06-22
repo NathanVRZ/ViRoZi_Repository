@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="imgs/favicon-32x32.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <script src="https://kit.fontawesome.com/2b2df414a8.js" crossorigin="anonymous"></script>
+  <script src="js/menu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <title>Analise da Loja</title>
+</head>
+
+<body>
+  <div class="sidebar" id="mySidebar">
+    <a href="#" class="closebtn" onclick="closeNav()">x</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="contato.html">Contato</a>
+    <a href="index.html">Sair</a>
+  </div>
+
+  <div class="header">
+    <a class="openbtn" onclick="openNav()">☰</a>
+  </div>
+
+  <div class="main" id="main">
+    <div class="container">
+      <h1>Analise da loja</h1>
+      <div class="box b-green">
+        <h1 id="online">Carregando</h1>
+        <h2>Pessoas no site</h2>
+      </div>
+      <div class="box b-yellow">
+        <h1 id="email">Carregando</h1>
+        <h2>Emails enviados</h2>
+      </div>
+
+      <div class="graph g-1">
+        <h3>Produtos mais vendidos</h3>
+        <canvas id="grafico"></canvas>
+      </div>
+      <div class="social">
+        <h3>Categoria de Roupa</h3>
+        <div class="icon">
+          <i class="fas fa-tshirt fa-4x"></i>
+          <h3>Camisetas</h3>
+        </div>
+        <div class="icon">
+          <i class="fas fa-male fa-4x"></i>
+          <h3>Calças</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<!-- #e372f6#e372f6 -->
+<script>
+  var subir = 0;
+  setInterval(() => {
+    // somar + Math.floor(Math.random() * 25);
+    var users = Math.floor(Math.random() * 40);
+
+    online.innerHTML = `${users}`;
+
+  }, 5000);
+
+  setInterval(() => {
+    email.innerHTML = ++subir
+
+  }, 5000);
+
+  var ctx = document.getElementById('grafico').getContext('2d');
+  var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ['Corta vento', 'Calça Tactel', 'Bermuda Tactel', 'Moletom Neon'],
+        datasets: [{
+            label: 'Roupas mais vendidas',
+            backgroundColor: 'rgba(204, 0, 255, 0.671)',
+            borderColor: 'rgba(204, 0, 255, 0.671)',
+            data: [15, 20, 12, 55]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>

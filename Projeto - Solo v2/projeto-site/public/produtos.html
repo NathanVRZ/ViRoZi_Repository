@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="imgs/favicon-32x32.png" />
+    <link rel="stylesheet" href="css/produtos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+</head>
+<body>
+    <nav>
+        <label class="logo">BANDDE</label>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a class="active" href="produtos.html">Produtos</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+    </nav>
+
+    <div class="card">
+        <img src="imgs/MoletomNeon.jpeg" alt="moletom neon" style="width:100%">
+        <h1>Moletom Neon</h1>
+        <p class="price">R$ 70,00</p>
+        <p>Tamanhos: P-GG</p>
+        <p><button onclick="ir1()">Encomendar</button></p>
+      </div>
+
+      <div class="card">
+        <img src="imgs/calçatactel.jpg" alt="calça tactel" style="width:100%">
+        <h1>Calça Tactel</h1>
+        <p class="price">R$ 60,00</p>
+        <p>Tamanhos: P-GG</p>
+        <p><button onclick="ir2()">Encomendar</button></p>
+      </div>
+
+      <div class="card">
+        <img src="imgs/bermudatactel.jpg" alt="bermuda tactel" style="width:100%">
+        <h1>Calça Tactel</h1>
+        <p class="price">R$ 50,00</p>
+        <p>Tamanhos: P-GG</p>
+        <p><button onclick="ir3()">Encomendar</button></p>
+      </div>
+
+    <div id="retangulo">
+        <p>
+            Todos os direitos reservados
+        </p>
+        <div class="imagem">
+            <a href="https://www.facebook.com/BanddeStore/"><img class="imgis" src="/imgs/facebook.png"></a>
+            <a href="https://www.instagram.com/bandde_store/?hl=pt-br"><img class="imgis" src="/imgs/instagram.png"></a>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function ir1() {
+        window.location.href = 'login.html'
+    }
+
+    function ir2() {
+        window.location.href = 'login.html'
+    }
+
+    function ir3() {
+        window.location.href = 'login.html'
+    }
+</script>
